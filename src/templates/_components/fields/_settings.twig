@@ -1,0 +1,14 @@
+{% import '_includes/forms' as _forms %}
+
+{{ _forms.field({
+    label: "Mode"|t('site'),
+    instructions: "Select the rendering mode for this field in element edit forms."|t('incognito-field'),
+    id: 'mode',
+}, _forms.select({
+    id: 'mode',
+    name: 'mode',
+    options: modes,
+    value: field.mode|default('plain')
+})) }}
+
+{% include '_components/fieldtypes/PlainText/settings' %}
