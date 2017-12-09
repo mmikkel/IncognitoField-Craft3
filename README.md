@@ -1,6 +1,6 @@
 # Incognito Field plugin for Craft CMS 3.x
 
-PlainText drop-in replacement that can be set to `disabled`, `hidden` or `readonly.
+PlainText drop-in replacement that can be set to `disabled`, `hidden` or `readonly`.
 
 ## Requirements
 
