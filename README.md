@@ -6,6 +6,8 @@ PlainText drop-in replacement that can be set to `disabled`, `hidden` or `readon
 
 This plugin requires Craft CMS 3.0.0-beta.23 or later.
 
+[Looking for the Craft 2 version?](https://github.com/mmikkel/IncognitoField-Craft)  
+
 ## Installation
 
 To install the plugin, follow these instructions.
