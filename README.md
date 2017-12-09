@@ -24,7 +24,7 @@ To install the plugin, follow these instructions.
 
 ## Incognito Field Overview
 
-Incognito Field adds a custom FieldType to Craft CMS, called Incognito. Incognito fields work exactly like regular PlainText fields, except that they can be configured to be `disabled`, `readonly` or `hidden for element editor forms.
+Incognito Field adds a custom FieldType to Craft CMS, called Incognito. Incognito fields work exactly like regular PlainText fields, except that they can be configured to be `disabled`, `readonly` or `hidden` for element editor forms.
 
 A good example use case for Incognito is whenever you need a field that shouldn't be editable via the CP – e.g. if you want to save some data from a feed or external API on your element model.
 
