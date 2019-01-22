@@ -25,7 +25,10 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
 {
     // Public Properties
     // =========================================================================
+
     public $mode = 'plain';
+    public $adminMode = 'plain';
+    public $enableAdminMode = false;
 
     // Static Methods
     // =========================================================================
@@ -46,8 +49,9 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
     public function rules()
     {
         $rules = array_merge(parent::rules(), [
-            ['mode', 'string'],
-            ['mode', 'default', 'value' => 'plain'],
+            [['mode', 'adminMode'], 'string'],
+            [['enableAdminMode'], 'boolean'],
+            [['mode', 'adminMode'], 'default', 'value' => 'plain'],
         ]);
         return $rules;
     }
@@ -57,7 +61,6 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
      */
     public function getSettingsHtml()
     {
-
         $modes = [
             'plain' => Craft::t('site', 'Plain Text'),
             'disabled' => Craft::t('site', 'Disabled'),
@@ -71,6 +74,7 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
             [
                 'field' => $this,
                 'modes' => $modes,
+                'adminModes' => $modes,
             ]
         );
     }
@@ -83,6 +87,7 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
      */
     public function getInputHtml($value, ElementInterface $element = null): string
     {
+        $useAdminMode = $this->enableAdminMode && Craft::$app->getUser()->checkPermission('incognitoField.viewAdminMode');
 
         // Get our id and namespace
         $id = Craft::$app->getView()->formatInputId($this->handle);
@@ -97,6 +102,7 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
                 'field' => $this,
                 'id' => $id,
                 'namespacedId' => $namespacedId,
+                'useAdminMode' => $useAdminMode,
             ]
         );
     }

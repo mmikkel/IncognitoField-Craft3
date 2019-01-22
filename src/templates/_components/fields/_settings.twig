@@ -2,7 +2,7 @@
 
 {{ _forms.field({
     label: "Mode"|t('site'),
-    instructions: "Select the rendering mode for this field in element edit forms."|t('incognito-field'),
+    instructions: "Select the rendering mode for regular users."|t('incognito-field'),
     id: 'mode',
 }, _forms.select({
     id: 'mode',
@@ -10,5 +10,28 @@
     options: modes,
     value: field.mode|default('plain')
 })) }}
+
+{{ _forms.checkboxField({
+    label: "Enable Admin Mode"|t('incognito-field'),
+    id: 'enableAdminMode',
+    name: 'enableAdminMode',
+    checked: field.enableAdminMode,
+    toggle: 'admin-mode'
+}) }}
+
+<div id="admin-mode" class="{% if not field.enableAdminMode %} hidden{% endif %}">
+    {{ _forms.field({
+        label: "Admin Mode"|t('site'),
+        instructions: "Select the rendering mode for admins."|t('incognito-field'),
+        id: 'adminMode',
+    }, _forms.select({
+        id: 'adminMode',
+        name: 'adminMode',
+        options: adminModes,
+        value: field.adminMode|default('plain')
+    })) }}
+</div>
+
+<hr>
 
 {% include '_components/fieldtypes/PlainText/settings' %}
