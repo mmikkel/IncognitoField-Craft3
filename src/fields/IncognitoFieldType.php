@@ -122,6 +122,7 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
      */
     private function _getMode(ElementInterface $element = null): string
     {
+        // Return early if there is no override set
         if (empty($this->modeOverride)) {
             return $this->mode;
         }
@@ -141,6 +142,12 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
 
         $view->setTemplateMode($oldTemplateMode);
 
+        // Don’t override if we got an empty string
+        if ($modeOverride === '') {
+            return $this->mode;
+        }
+
+        // Don’t override if we got an invalid value
         if (!array_key_exists($modeOverride, $this->_modes)) {
             Craft::error('Invalid value for mode override: '.$modeOverride, __METHOD__);
             return $this->mode;
