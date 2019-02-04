@@ -32,8 +32,6 @@
 
 {% import "_includes/forms" as _forms %}
 
-{% set mode = useAdminMode ? field.adminMode : field.mode %}
-
 {% set isHidden = mode == 'hidden' %}
 {% set isDisabled = mode == 'disabled' %}
 {% set isReadOnly = mode == 'readonly' %}

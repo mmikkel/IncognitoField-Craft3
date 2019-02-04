@@ -10,8 +10,6 @@
 
 namespace mmikkel\incognitofield;
 
-use craft\events\RegisterUserPermissionsEvent;
-use craft\services\UserPermissions;
 use mmikkel\incognitofield\fields\IncognitoFieldType;
 
 use Craft;
@@ -54,15 +52,6 @@ class IncognitoField extends Plugin
         Event::on(Fields::class, Fields::EVENT_REGISTER_FIELD_TYPES,
             function(RegisterComponentTypesEvent $event) {
                 $event->types[] = IncognitoFieldType::class;
-            }
-        );
-
-        // Register user permissions
-        Event::on(UserPermissions::class, UserPermissions::EVENT_REGISTER_PERMISSIONS,
-            function(RegisterUserPermissionsEvent $event) {
-                $event->permissions[Craft::t('incognito-field', 'Incognito Field')] = [
-                    'incognitoField.viewAdminMode' => ['label' => Craft::t('incognito-field', 'View incognito fields in admin mode')]
-                ];
             }
         );
 
