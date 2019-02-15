@@ -32,7 +32,7 @@ _Incognito Field works both standalone and inside Matrix blocks._
 
 ## Configuring Incognito Field
 
-Create a new field (or convert an existing Plain Text field) as _Incognito Field_. Select the rendering mode you want in the _Mode_ setting to make the field `hidden`, `readonly`, `disabled` or a regular, visible and editable PlainText field.  optionally override the mode in _Mode Override_ which you can find in the advanced field settings.
+Create a new field (or convert an existing Plain Text field) as _Incognito Field_. Select the rendering mode you want in the _Mode_ setting to make the field `hidden`, `readonly`, `disabled` (or a regular, visible and editable PlainText field).  optionally override the mode in _Mode Override_ which you can find in the advanced field settings.
 
 ### Overriding the rendering mode with Twig logic
 
