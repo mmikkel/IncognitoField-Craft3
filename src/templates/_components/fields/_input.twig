@@ -32,9 +32,9 @@
 
 {% import "_includes/forms" as _forms %}
 
-{% set isHidden = field.mode == 'hidden' %}
-{% set isDisabled = field.mode == 'disabled' %}
-{% set isReadOnly = field.mode == 'readonly' %}
+{% set isHidden = mode == 'hidden' %}
+{% set isDisabled = mode == 'disabled' %}
+{% set isReadOnly = mode == 'readonly' %}
 
 {% if isHidden %}
     <style>

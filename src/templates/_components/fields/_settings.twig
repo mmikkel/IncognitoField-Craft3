@@ -11,4 +11,21 @@
     value: field.mode|default('plain')
 })) }}
 
+<hr>
+<a class="fieldtoggle" data-target="incognito-advanced">{{ "Advanced"|t('app') }}</a>
+<div id="incognito-advanced" class="hidden">
+    {{ _forms.textareaField({
+        label: "Mode Override"|t('incognito-field'),
+        instructions: "Override the rendering mode using Twig. Your code must return a string of either `plain`, `disabled`, `hidden`, or `readonly`."|t('incognito-field'),
+        id: 'modeOverride',
+        class: 'code',
+        name: 'modeOverride',
+        rows: 5,
+        value: field.modeOverride
+    }) }}
+</div>
+
+<hr>
+
 {% include '_components/fieldtypes/PlainText/settings' %}
+
