@@ -32,7 +32,34 @@ _Incognito Field works both standalone and inside Matrix blocks._
 
 ## Configuring Incognito Field
 
-Install it, create a new field (or convert an existing one) as _Incognito Field_. Select the rendering mode you want in the _Mode_ settings field, profit.  
+Create a new field (or convert an existing Plain Text field) as _Incognito Field_. Select the rendering mode you want in the _Mode_ setting, optionally override the mode in _Mode Override_ which you can find in the advanced field settings.
+
+### Mode Override examples
+
+Render as an editable PlainText field if the element is **new**:  
+
+```twig
+{{ not element.id ? 'plain' }}
+```
+
+Render as an editable PlainText field for admin users:  
+
+```twig
+{{ currentUser.admin ? 'plain' }}
+```
+
+Render as a visible, read-only field for users in a particular user group:  
+
+```twig
+{{ currentUser.isInGroup('editors') ? 'readonly' }}
+```
+
+Render as an editable PlainText field for users that have _edit site permissions_ for a particular site:  
+
+```twig
+{% set site = craft.app.sites.getSiteByHandle('germany') %}
+{{ currentUser.can('editSite:' ~ site.uid) ? 'plain' }}
+```
 
 ## Disclaimer
 

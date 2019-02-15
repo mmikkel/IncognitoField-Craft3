@@ -2,7 +2,7 @@
     "name": "mmikkel/incognito-field",
     "description": "PlainText drop-in replacement that can be set to disabled, hidden or readonly.",
     "type": "craft-plugin",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "keywords": [
         "craft",
         "cms",
