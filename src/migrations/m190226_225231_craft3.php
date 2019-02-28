@@ -4,7 +4,6 @@ namespace mmikkel\incognitofield\migrations;
 
 use craft\db\Migration;
 use craft\db\Query;
-use craft\db\Table;
 use craft\helpers\ArrayHelper;
 use craft\helpers\Db;
 use craft\helpers\Json;
@@ -22,7 +21,7 @@ class m190226_225231_craft3 extends Migration
     public function safeUp()
     {
         $this->migratePlainTextSettings();
-        $this->update(Table::FIELDS, ['type' => IncognitoFieldType::class], ['type' => 'IncognitoField']);
+        $this->update('{{%fields}}', ['type' => IncognitoFieldType::class], ['type' => 'IncognitoField']);
     }
 
     /**
@@ -33,7 +32,7 @@ class m190226_225231_craft3 extends Migration
     {
         $fields = (new Query())
             ->select(['id', 'settings'])
-            ->from([Table::FIELDS])
+            ->from(['{{%fields}}'])
             ->where(['type' => 'IncognitoField'])
             ->all($this->db);
 
@@ -56,7 +55,7 @@ class m190226_225231_craft3 extends Migration
                 $settings['columnType'] = Schema::TYPE_TEXT;
             }
 
-            $this->update(Table::FIELDS, [
+            $this->update('{{%fields}}', [
                 'settings' => Json::encode($settings)
             ], ['id' => $field['id']]);
         }
