@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.1.1.1 - 2019-02-28
+### Added
+- Fixed an error that occurred when updating to Incognito 1.1.1 on Craft 3.0.x
+
 ## 1.1.1 - 2019-02-28
 ### Added
 - Adds Craft 3 migration. Thanks @carcls!  
