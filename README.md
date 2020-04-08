@@ -40,10 +40,10 @@ You can use Twig in the `Mode Override` setting field to optionally override the
 
 #### Mode Override examples
 
-Render as an editable PlainText field if the element is **new**:  
+Render as an editable PlainText field if the element is an unsaved draft:
 
 ```twig
-{{ not element.id ? 'plain' }}
+{{ element.getIsUnsavedDraft() ? 'plain' }}
 ```
 
 Render as an editable PlainText field for admin users:  

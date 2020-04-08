@@ -39,9 +39,9 @@
 {% verbatim %}
 You can use Twig to override the default rendering mode for this field. Note that your code must return a string of either `plain`, `disabled`, `hidden`, or `readonly`. **Examples:**
 
-Render as an editable PlainText field if the element is **new**:
+Render as an editable PlainText field if the element is an unsaved draft:
 
-    {{ not element.id ? 'plain' }}
+    {{ element.getIsUnsavedDraft() ? 'plain' }}
 
 Render as an editable PlainText field for admin users:
 
