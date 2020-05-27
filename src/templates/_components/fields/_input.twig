@@ -12,6 +12,7 @@
 {% set isHidden = mode == 'hidden' %}
 {% set isDisabled = mode == 'disabled' %}
 {% set isReadOnly = mode == 'readonly' %}
+{% set isCode = field.code is defined and field.code %}
 
 {% if isHidden %}
     <style>
@@ -26,7 +27,7 @@
     id: name,
     name: name,
     value: value,
-    class: 'nicetext'~(isDisabled ? ' disabled'),
+    class: 'nicetext'~(isDisabled ? ' disabled')~(isCode ? ' code'),
     maxlength: field.charLimit,
     showCharsLeft: true,
     placeholder: field.placeholder|t('site'),
