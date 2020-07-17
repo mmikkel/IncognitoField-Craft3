@@ -4,9 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 1.1.2 - 2020-04-08
-### Changed
-- Updated "Mode Override" examples to work with Craft 3.2
+## Unreleased
+### Added  
+- Adds compatibility with Craft 3.5. Thanks @carlcs!  
+### Improved  
+- Updated "Mode Override" examples  
+### Fixed  
+- Restores support for the "monospaced font" field setting. Thanks @kennethormandy!  
 
 ## 1.1.1.1 - 2019-02-28
 ### Fixed

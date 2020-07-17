@@ -12,6 +12,8 @@ use Craft;
 use craft\base\ElementInterface;
 use craft\base\PreviewableFieldInterface;
 use craft\fields\PlainText;
+use craft\helpers\Html;
+use craft\web\View;
 
 /**
  * Incognito field type
@@ -95,8 +97,38 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
         $mode = $this->_getMode($element);
 
         // Get our id and namespace
-        $id = Craft::$app->getView()->formatInputId($this->handle);
+        if (version_compare(Craft::$app->getVersion(), '3.5', '>=')) {
+            $id = Html::id($this->handle);
+        } else {
+            /** @noinspection PhpDeprecationInspection */
+            $id = Craft::$app->getView()->formatInputId($this->handle);
+        }
+
         $namespacedId = Craft::$app->getView()->namespaceInputId($id);
+
+        // Register mode specific CSS and JS
+        switch ($mode) {
+            case 'hidden':
+                $css = <<<CSS
+#{$namespacedId}-field {
+    display: none;
+}
+CSS;
+                Craft::$app->getView()->registerCss($css);
+                break;
+
+            case 'readonly':
+                $js = <<<JS
+var field = document.getElementById('{$namespacedId}');
+field.setAttribute('readonly', 'readonly');
+field.style.background = 'rgb(250,250,250)';
+field.style.boxShadow = 'none';
+field.style.opacity = '0.8';
+field.style.color = '#596473';
+JS;
+                Craft::$app->getView()->registerJs($js, View::POS_END);
+                break;
+        }
 
         // Render the input template
         return Craft::$app->getView()->renderTemplate(
