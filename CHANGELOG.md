@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## Unreleased
 ### Added
-- Adds compatibility with Craft 3.5
+- Adds compatibility with Craft 3.5. Thanks @carlcs!
+### Fixed
+- Restores support for the "monospaced font" field setting. Thanks @kennethormandy!
 
 ## 1.1.1.1 - 2019-02-28
 ### Fixed
