@@ -13,12 +13,18 @@
 {% set isDisabled = mode == 'disabled' %}
 {% set isReadOnly = mode == 'readonly' %}
 {% set isCode = field.code is defined and field.code %}
+{% set uiMode = field.uiMode is defined ? field.uiMode : null %}
 
 {% set config = {
     id: name,
     name: name,
     value: value,
-    class: 'nicetext'~(isDisabled ? ' disabled')~(isCode ? ' code'),
+    class: [
+        'nicetext',
+        isCode ? 'code',
+        uiMode == 'enlarged' ? 'readable',
+        isDisabled ? 'disabled'
+    ]|filter,
     maxlength: field.charLimit,
     showCharsLeft: true,
     placeholder: field.placeholder|t('site'),

@@ -7,8 +7,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 1.3.0 - 2022-03-23
 ### Added
 - Adds Craft 4.0 compatibility
+### Fixed
+- Fixes an issue where the "UI Mode" setting would not have an effect
 ### Changed
 - Incognito Field now requires Craft 3.7.x
+- Updated plugin icon
 
 ## 1.2.0 - 2020-07-17
 ### Added  
