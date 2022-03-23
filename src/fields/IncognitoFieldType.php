@@ -61,19 +61,18 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
         parent::__construct($config);
     }
 
-    public function rules()
+    public function rules(): array
     {
-        $rules = array_merge(parent::rules(), [
+        return array_merge(parent::rules(), [
             [['mode'], 'string'],
             [['mode'], 'default', 'value' => 'plain'],
         ]);
-        return $rules;
     }
 
     /**
      * @return string
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         // Render the settings template
         return Craft::$app->getView()->renderTemplate(
@@ -92,7 +91,7 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
      *
      * @return string
      */
-    public function getInputHtml($value, ElementInterface $element = null): string
+    public function getInputHtml($value, ?\craft\base\ElementInterface $element = null): string
     {
         $mode = $this->_getMode($element);
 

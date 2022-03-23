@@ -1,10 +1,10 @@
-# Incognito Field plugin for Craft CMS 3.x
+# Incognito Field plugin for Craft CMS
 
 PlainText drop-in replacement that can be set to `disabled`, `hidden` or `readonly`.
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.7.0 or later.
 
 [Looking for the Craft 2 version?](https://github.com/mmikkel/IncognitoField-Craft)  
 
