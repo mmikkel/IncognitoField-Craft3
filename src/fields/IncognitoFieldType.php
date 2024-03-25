@@ -1,10 +1,4 @@
 <?php
-/**
- * Incognito Field plugin for Craft CMS 3.x
- *
- * @link      https://www.vaersaagod.no
- * @copyright Copyright (c) 2017 Mats Mikkel Rummelhoff
- */
 
 namespace mmikkel\incognitofield\fields;
 
@@ -28,10 +22,10 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
     // Properties
     // =========================================================================
 
-    public $mode = 'plain';
-    public $modeOverride;
+    public ?string $mode = 'plain';
+    public ?string $modeOverride = null;
 
-    private $_modes;
+    private array $_modes;
 
     // Static Methods
     // =========================================================================
@@ -70,7 +64,11 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
     }
 
     /**
-     * @return string
+     * @return string|null
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     * @throws \yii\base\Exception
      */
     public function getSettingsHtml(): ?string
     {
@@ -86,10 +84,13 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
 
 
     /**
-     * @param mixed $value
+     * @param $value
      * @param ElementInterface|null $element
-     *
      * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     * @throws \yii\base\Exception
      */
     public function getInputHtml($value, ?\craft\base\ElementInterface $element = null): string
     {
@@ -109,22 +110,22 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
         switch ($mode) {
             case 'hidden':
                 $css = <<<CSS
-#{$namespacedId}-field {
-    display: none;
-}
-CSS;
+                    #{$namespacedId}-field {
+                        display: none;
+                    }
+                    CSS;
                 Craft::$app->getView()->registerCss($css);
                 break;
 
             case 'readonly':
                 $js = <<<JS
-var field = document.getElementById('{$namespacedId}');
-field.setAttribute('readonly', 'readonly');
-field.style.background = 'rgb(250,250,250)';
-field.style.boxShadow = 'none';
-field.style.opacity = '0.8';
-field.style.color = '#596473';
-JS;
+                    var field = document.getElementById('{$namespacedId}');
+                    field.setAttribute('readonly', 'readonly');
+                    field.style.background = 'rgb(250,250,250)';
+                    field.style.boxShadow = 'none';
+                    field.style.opacity = '0.8';
+                    field.style.color = '#596473';
+                    JS;
                 Craft::$app->getView()->registerJs($js, View::POS_END);
                 break;
         }
