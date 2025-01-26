@@ -64,13 +64,14 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
     }
 
     /**
+     * @param bool $readOnly
      * @return string|null
      * @throws \Twig\Error\LoaderError
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      * @throws \yii\base\Exception
      */
-    public function getSettingsHtml(): ?string
+    public function getSettingsHtml(bool $readOnly = false): ?string
     {
         // Render the settings template
         return Craft::$app->getView()->renderTemplate(
@@ -78,6 +79,7 @@ class IncognitoFieldType extends PlainText implements PreviewableFieldInterface
             [
                 'field' => $this,
                 'modes' => $this->_modes,
+                'readOnly' => $readOnly,
             ]
         );
     }
